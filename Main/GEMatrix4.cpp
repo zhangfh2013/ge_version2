@@ -62,10 +62,6 @@ Matrix4 :: Matrix4(const Matrix3& mat3)
    m[3][3] = 1.0;
 }
 
-Vector4 Matrix4::getColumn(size_t iCol)
-{
-   return Vector4(m[0][iCol], m[1][iCol], m[2][iCol], m[3][iCol]);
-}
 
 void Matrix4::setColumn(size_t iCol, const Vector4& vec4)
 {
@@ -169,10 +165,6 @@ void Matrix4 :: setTransport(const Vector3& vec3)
    m[3][2] = vec3[2];
 }
 
-Vector3 Matrix4 :: getTransport()
-{
-   return Vector3(m[3][0], m[3][1], m[3][2]);
-}
 
 void Matrix4 :: setScale(const Vector3& vec3)
 {
@@ -181,10 +173,6 @@ void Matrix4 :: setScale(const Vector3& vec3)
    m[2][2] = vec3[2];
 }
 
-Vector3 Matrix4 :: getScale()
-{
-   return Vector3(m[0][0], m[1][1], m[2][2]);
-}
 
 Matrix3 Matrix4 :: extractMatrix3()
 {

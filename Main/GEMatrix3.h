@@ -90,17 +90,11 @@ namespace ge
       m[2][2] = mat3.m[2][2];
     }
 
-    inline Real* operator[] (size_t index)
-    {
-      return  (Real*)m[index];
-    }
-
 	inline Real* operator[] (size_t index) const
     {
       return  (Real*)m[index];
     }
     
-    Vector3 getColumn(size_t iCol);
 	Vector3 getColumn(size_t iCol) const;
     void setColumn(size_t iCol, const Vector3& vec3);
 
@@ -125,7 +119,7 @@ namespace ge
     Matrix3 inverse();
     Matrix3 orthonormalize();
 
-    Matrix3 fromQuaternion(const Quaternion& qtn);
+    void fromQuaternion(const Quaternion& qtn);
     void fromEuler(const Euler& eul);
     
     Quaternion toQuaternion();

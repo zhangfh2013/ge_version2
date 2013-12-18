@@ -20,9 +20,8 @@ public:
 
     inline Radian& operator = (Real r){mRad  = r; return *this;}
     inline Radian& operator = (const Radian& rad){mRad = rad.mRad; return *this;}
-    inline Radian& operator = (const Degree&);
+    inline Radian& operator = (const Degree& deg);
 
-    inline Real getValue(){return mRad;}
     inline Real getValue() const {return mRad;}
     inline void setValue(Real value){mRad = value;}
     inline void setValue(const Radian& rad){mRad = rad.mRad;}
@@ -77,8 +76,6 @@ public:
     Degree(const Degree& deg):mDeg(deg.mDeg){}
     Degree(const Radian& rad){mDeg = 180.0 * rad.getValue() / PI;}
 
-
-    inline Real getValue(){return mDeg;}
     inline Real getValue() const {return mDeg;}
     inline void SetValue(const Real deg){mDeg = deg;}
     inline void SetValue(const Degree& deg){mDeg = deg.mDeg;}

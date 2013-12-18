@@ -38,14 +38,12 @@ void Plane::redefine(const Vector3& point0, const Vector3& point1,
 Real Plane::getDistance(const Vector3& fpoint)
 {
   Real len = normal.length();
-//  Real value = 
-  return Math::Abs( normal.dotProduct(fpoint) + d) / len;
+  return Math::Abs(normal.dotProduct(fpoint) + d) / len;
 }
 
 Real Plane::getDistance(const Vector3& fpoint) const
 {
   Real len = normal.length();
-
   return Math::Abs( normal.dotProduct(fpoint) + d) / len;
 }
 

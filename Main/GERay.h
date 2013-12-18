@@ -1,66 +1,59 @@
 #ifndef GERAY_H_INCLUDED
 #define GERAY_H_INCLUDED
+#include "GEPrerequires.h"
 #include "GEVector3.h"
 namespace ge
 {
-  class Ray
-  {
-  public:
-    /* define the ray in the 3D space
-       @param orientation define the orientation of the ray emit and it must be  an unit vector
-       @param origin define the start point of the ray emit
-       @remark the member property orientation must be a unit 3D unit
-       */
-    Vector3 orientation, origin;
+	class Ray
+	{
+	public:
+		/* define the ray in the 3D space
+		@param orientation define the orientation of the ray emit and it must be  an unit vector
+		@param origin define the start point of the ray emit
+		@remark the member property orientation must be a unit 3D unit
+		*/
+		Vector3 orientation, origin;
 
-    Ray()
-    {
-    }
+		Ray()
+		{
+		}
 
-    Ray(const Vector3& forien, const Vector3& forigin)
-    {
-//      forien.normalise();
-      orientation = forien;
-      origin = forigin;
-    }
+		Ray(const Vector3& forien, const Vector3& forigin)
+		{
+			assert(forien.length() == 1);
+			orientation = forien;
+			origin = forigin;
+		}
 
-    inline void setOrien(const Vector3& fOrien)
-    {
-//      fOrien.normalise();
-      orientation = fOrien;
-    }
+		inline void setOrien(const Vector3& fOrien)
+		{
+			assert(fOrien.length() == 1);
 
-    inline Vector3 getOrien()
-    {
-      return orientation;
-    }
+			orientation = fOrien;
+		}
 
-	inline Vector3 getOrien() const
-    {
-      return orientation;
-    }
 
-    inline void setOrigin(const Vector3& fOrigin)
-    {
-      origin = fOrigin;
-    }
+		inline Vector3 getOrien() const
+		{
+			return orientation;
+		}
 
-    inline Vector3 getOrigin()
-    {
-      return origin;
-    }
+		inline void setOrigin(const Vector3& fOrigin)
+		{
+			origin = fOrigin;
+		}
 
-	inline Vector3 getOrigin() const
-    {
-      return origin;
-    }
+		inline Vector3 getOrigin() const
+		{
+			return origin;
+		}
 
-    inline Vector3 getPoint(Real t)
-    {
-      return  orientation * t + origin;
-    }
-    
-  };
+		inline Vector3 getPoint(Real t) const
+		{
+			return  Vector3(orientation * t + origin);
+		}
+
+	};
 }
 
 #endif//GERAY_H_INCLUDED

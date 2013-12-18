@@ -85,17 +85,45 @@ namespace ge
 
         inline Vector2 operator / (const Real scale)
         {
-            assert(scale != 0.0);
+            assert(scale > EPSILON);
             return Vector2(x / scale, y / scale);
         }
 
         inline Vector2& operator /= (const Real scale)
         {
-            assert(scale != 0.0);
+            assert(scale > EPSILON);
             x /= scale;
             y /= scale;
             return *this;
         }
+
+		Real operator [] (const Uint index)
+		{
+			assert(index < 2);
+			switch(index)
+			{
+			case 0:
+				return x;
+				break;
+			case 1:
+				return y;
+				break;
+			}
+		}
+
+		Real operator [] (const Uint index) const
+		{
+			assert(index < 2);
+			switch(index)
+			{
+			case 0:
+				return x;
+				break;
+			case 1:
+				return y;
+				break;
+			}
+		}
 
         //Logical operation
         inline bool operator == (const Vector2& vec2)
@@ -105,7 +133,7 @@ namespace ge
 
         inline bool operator != (const Vector2& vec2)
         {
-            return (x != vec2.x) || (y != vec2.y);
+            return ! operator == (vec2);
         }
 
         inline bool operator >= (const Vector2& vec2)
@@ -135,17 +163,12 @@ namespace ge
             return Math::Sqrt(x * x + y * y);
         }
 
-//        inline Real getNomal()
-//        {
-//            return length();
-//        }
-
 
         inline void nomalise()
         {
             Real len = length();
 
-            assert(len != 0.0);
+            assert(len > EPSILON);
             x /= len;
             y /= len;
         }
@@ -164,10 +187,7 @@ namespace ge
         {
             Real numerator = this->dotProduct(other);
             Real denominator = this->length() * other.length();
-            if(denominator < 1e-6)
-            {
-                denominator = 1e-6;
-            }
+            assert(denominator >= EPSILON);
             return Radian(Math::ACos(numerator / denominator));
         }
 
@@ -175,7 +195,7 @@ namespace ge
 
         inline friend std::ostream& operator<< (std::ostream& os, const Vector2& vec2)
         {
-            os<<vec2.x<<" "<<vec2.y;
+            os<<"("<<vec2.x<<", "<<vec2.y<<")";
             return os;
         }
     };

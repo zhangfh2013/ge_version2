@@ -15,17 +15,12 @@ namespace ge
     Matrix4(const Real mat[4][4]);
     Matrix4(const Matrix3& mat3);
 
-    inline Real* operator[] (size_t index)
-    {
-      return (Real*)m[index];
-    }
-
 	inline Real* operator[] (size_t index) const
     {
       return (Real*)m[index];
     }
 
-    Vector4 getColumn(size_t iCol);
+    Vector4 getColumn(size_t iCol) const;
     void setColumn(size_t iCol, const Vector4& vec4);
 
     Matrix4& operator = (const Matrix4& mat4);
@@ -42,17 +37,16 @@ namespace ge
     Matrix4 operator * (Real scale);
     Vector4 operator * (const Vector4& vec4);
     Matrix4 operator * (const Matrix4& mat4);
-//    Vector4 operator * (const Vector4& vec4, const Matrix4& mat4);
 
     //Real deteminant();
     //Matrix4 transpose();
     //Matrix4 inverse();
 
     void setTransport(const Vector3& vec3);
-    Vector3 getTransport();
+    Vector3 getTransport() const;
     
     void setScale(const Vector3& vec3);
-    Vector3 getScale();
+    Vector3 getScale() const;
 
     Matrix3 extractMatrix3();
     Quaternion extractQuaternion();

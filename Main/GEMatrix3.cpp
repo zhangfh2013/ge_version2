@@ -2,11 +2,6 @@
 #include "GEMath.h"
 using namespace ge;
 
-Vector3 Matrix3 :: getColumn(size_t iCol)
-{
-   return Vector3(m[iCol][0], m[iCol][1], m[iCol][2]);
-}
-
 Vector3 Matrix3 :: getColumn(size_t iCol) const
 {
    return Vector3(m[iCol][0], m[iCol][1], m[iCol][2]);
@@ -131,7 +126,7 @@ Matrix3 Matrix3 :: orthonormalize()
    return Matrix3(vec0, vec3, vec4);
 }
 
-Matrix3 Matrix3 :: fromQuaternion(const Quaternion& qtn)
+void Matrix3 :: fromQuaternion(const Quaternion& qtn)
 {
    Real m00 = qtn.w * qtn.w + qtn.x * qtn.x - qtn.y * qtn.y - qtn.z * qtn.z;
    Real m01 = 2 * (qtn.x * qtn.y - qtn.w * qtn.z);
@@ -145,9 +140,11 @@ Matrix3 Matrix3 :: fromQuaternion(const Quaternion& qtn)
    Real m21 = 2 * (qtn.w * qtn.x + qtn.y * qtn.z);
    Real m22 = qtn.w * qtn.w - qtn.x * qtn.x - qtn.y * qtn.y + qtn.z * qtn.z;
 
-   return Matrix3(m00, m01, m02,
+   Matrix3 result(m00, m01, m02,
                   m10, m11, m12,
                   m20, m21, m22);
+
+   operator = (result);
 }
 
 Quaternion Matrix3 :: toQuaternion()

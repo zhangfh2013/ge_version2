@@ -23,11 +23,6 @@ namespace ge
         radius = fRadius;
       }
 
-      Real getRadius()
-      {
-        return radius;
-      }
-
 	  Real getRadius() const
       {
         return radius;
@@ -38,16 +33,16 @@ namespace ge
         center = fCenter;
       }
 
-      Vector3 getCenter()
-      {
-        return center;
-      }
-      
-
 	  Vector3 getCenter() const
       {
         return center;
       }
+
+	  void redefine(const Vector3& fcenter, Real fradius)
+	  {
+		  setCenter(fcenter);
+		  setRadius(fradius);
+	  }
     };
 }
 #endif // GESPHERE_H_INCLUDED

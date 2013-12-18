@@ -40,7 +40,7 @@ namespace ge
         maximum = fbox.maximum;
       }
 
-    Vector3 getMinimum()
+    Vector3 getMinimum() const
     {
       return minimum;
     }
@@ -58,7 +58,7 @@ namespace ge
     }
     
 
-    Vector3 getMaximum()
+    Vector3 getMaximum() const
     {
       return maximum;
     }

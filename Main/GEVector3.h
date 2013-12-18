@@ -125,7 +125,7 @@ namespace ge
             return *this;
         }
 
-        inline Vector3 operator * (const Real scale)
+        inline Vector3 operator * (const Real scale) const
         {
             return Vector3(x * scale, y * scale, z * scale);
         }
@@ -227,7 +227,7 @@ namespace ge
             }
         }
 
-        const Real operator [] (const int index) const
+        const Real operator [] (const Uint index) const
         {
             assert(index < 3);
             switch(index)
@@ -243,7 +243,7 @@ namespace ge
 
         inline friend std::ostream& operator << (std::ostream& os, const Vector3& vec3)
         {
-            os << vec3.x <<" "<< vec3.y << " " <<vec3.z;
+            os<<"(" << vec3.x <<", "<< vec3.y << ", " <<vec3.z<<")";
             return os;
         }
     };
