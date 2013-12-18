@@ -35,12 +35,6 @@ void Plane::redefine(const Vector3& point0, const Vector3& point1,
   d = -(normal.x * point0.x + normal.y * point0.y + normal.z * point0.z);
 }
 
-Real Plane::getDistance(const Vector3& fpoint)
-{
-  Real len = normal.length();
-  return Math::Abs(normal.dotProduct(fpoint) + d) / len;
-}
-
 Real Plane::getDistance(const Vector3& fpoint) const
 {
   Real len = normal.length();
